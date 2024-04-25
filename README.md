@@ -17,7 +17,11 @@ use std::time::Duration;
 
 let master = "master.quakeworld.nu:27000";
 let timeout = Some(Duration::from_secs(2));
-let server_addresses = masterstat::server_addresses(&master, timeout)?;
+
+match masterstat::server_addresses(&master, timeout) {
+    Ok(addresses) => { println!("found {} server addresses", addresses.len()) },
+    Err(e) => { eprintln!("error: {}", e); }
+}
 ```
 
 **Get server addresses from multiple master servers** (async, in parallel)
@@ -25,9 +29,11 @@ let server_addresses = masterstat::server_addresses(&master, timeout)?;
 ```rust
 use std::time::Duration;
 
-let masters = ["master.quakeworld.nu:27000", "master.quakeservers.net:27000"];
-let timeout = Some(Duration::from_secs(2));
-let server_addresses = masterstat::server_addresses_from_many(&masters, timeout).await?;
+async fn test() {
+  let masters = ["master.quakeworld.nu:27000", "master.quakeservers.net:27000"];
+  let timeout = Some(Duration::from_secs(2));
+  let server_addresses = masterstat::server_addresses_from_many(&masters, timeout).await?;
+}
 ```
 
 ## See also

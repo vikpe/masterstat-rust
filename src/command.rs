@@ -21,7 +21,7 @@ const SERVERS_RESPONSE_HEADER: [u8; 6] = [0xff, 0xff, 0xff, 0xff, 0x64, 0x0a];
 /// let master = "master.quakeworld.nu:27000";
 /// let timeout = Some(Duration::from_secs(2));
 /// match masterstat::server_addresses(&master, timeout) {
-///     Ok(addresses) => { println!("found {} server addresses", addresses.len()) }, ///
+///     Ok(addresses) => { println!("found {} server addresses", addresses.len()) },
 ///     Err(e) => { eprintln!("error: {}", e); }
 /// }
 /// ```

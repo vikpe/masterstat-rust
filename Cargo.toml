@@ -1,0 +1,18 @@
+[package]
+name = "masterstat"
+description = "Get server addresses from QuakeWorld master servers."
+version = "0.1.0"
+edition = "2021"
+license-file = "LICENCE"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.82"
+futures = "0.3.30"
+tokio = { version = "1.37.0", features = ["rt", "sync"] }
+zerocopy = "0.7.32"
+zerocopy-derive = "0.7.32"
+
+[dev-dependencies]
+pretty_assertions = "1.4.0"

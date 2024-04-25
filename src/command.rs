@@ -17,6 +17,7 @@ const SERVERS_RESPONSE_HEADER: [u8; 6] = [0xff, 0xff, 0xff, 0xff, 0x64, 0x0a];
 ///
 /// ```
 /// use std::time::Duration;
+/// use masterstat;
 ///
 /// let master = "master.quakeworld.nu:27000";
 /// let timeout = Some(Duration::from_secs(2));
@@ -37,6 +38,7 @@ pub fn server_addresses(
 ///
 /// ```
 /// use std::time::Duration;
+/// use masterstat;
 ///
 /// let masters = ["master.quakeworld.nu:27000", "master.quakeservers.net:27000"];
 /// let timeout = Some(Duration::from_secs(2));

@@ -1,4 +1,4 @@
-# masterstat
+# masterstat [![Test](https://github.com/vikpe/masterstat-rust/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/vikpe/masterstat-rust/actions/workflows/test.yml) ![crates](https://img.shields.io/crates/v/masterstat) ![docs.rs](https://img.shields.io/docsrs/masterstat)
 
 > Get server addresses from QuakeWorld master servers.
 
@@ -10,7 +10,7 @@ cargo add masterstat
 
 ## Usage
 
-**Query a single master server**
+**Get server addresses from a single master server**
 
 ```rust
 use std::time::Duration;
@@ -20,7 +20,7 @@ let timeout = Some(Duration::from_secs(2));
 let server_addresses = masterstat::server_addresses(&master, timeout)?;
 ```
 
-**Query multiple master servers (async, in parallel)**
+**Get server addresses from multiple master servers** (async, in parallel)
 
 ```rust
 use std::time::Duration;

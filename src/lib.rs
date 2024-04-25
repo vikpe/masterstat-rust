@@ -1,3 +1,7 @@
+//! # masterstat
+//!
+//! Get server addresses from QuakeWorld master servers.
+
 mod command;
 mod server_address;
 mod udp;

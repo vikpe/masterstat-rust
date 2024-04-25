@@ -11,6 +11,17 @@ use crate::udp;
 const SERVERS_COMMAND: [u8; 3] = [0x63, 0x0a, 0x00];
 const SERVERS_RESPONSE_HEADER: [u8; 6] = [0xff, 0xff, 0xff, 0xff, 0x64, 0x0a];
 
+/// Get server addresses from a single master server
+///
+/// # Example
+///
+/// ```
+/// use std::time::Duration;
+///
+/// let master = "master.quakeworld.nu:27000";
+/// let timeout = Some(Duration::from_secs(2));
+/// let server_addresses = masterstat::server_addresses(&master, timeout)?;
+/// ```
 pub fn server_addresses(
     master_address: &str,
     timeout: Option<Duration>,
@@ -20,6 +31,17 @@ pub fn server_addresses(
     Ok(sorted_and_unique(&server_addresses))
 }
 
+/// Get server addresses from many master servers (async, in parallel)
+///
+/// # Example
+///
+/// ```
+/// use std::time::Duration;
+///
+/// let masters = ["master.quakeworld.nu:27000", "master.quakeservers.net:27000"];
+/// let timeout = Some(Duration::from_secs(2));
+/// let server_addresses = masterstat::server_addresses_from_many(&masters, timeout).await?;
+/// ```
 pub async fn server_addresses_from_many(
     master_addresses: &[impl AsRef<str>],
     timeout: Option<Duration>,

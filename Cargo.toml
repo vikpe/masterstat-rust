@@ -1,6 +1,8 @@
 [package]
 name = "masterstat"
 description = "Get server addresses from QuakeWorld master servers."
+keywords = ["quake", "quakeworld", "servers"]
+repository = "https://github.com/vikpe/masterstat-rust"
 version = "0.1.0"
 edition = "2021"
 license-file = "LICENSE"

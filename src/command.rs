@@ -101,7 +101,7 @@ mod tests {
     }
 
     #[test]
-    fn test_sorted_unique() {
+    fn test_sorted_and_unique() {
         let server1_1 = ServerAddress {
             ip: "192.168.1.1".to_string(),
             port: 1,

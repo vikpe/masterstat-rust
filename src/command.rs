@@ -6,7 +6,6 @@ use tokio::sync::Mutex;
 use zerocopy::FromBytes;
 
 use crate::server_address::{RawServerAddress, ServerAddress, RAW_ADDRESS_SIZE};
-use crate::udp;
 
 const SERVERS_COMMAND: [u8; 3] = [0x63, 0x0a, 0x00];
 const SERVERS_RESPONSE_HEADER: [u8; 6] = [0xff, 0xff, 0xff, 0xff, 0x64, 0x0a];
@@ -29,7 +28,11 @@ pub fn server_addresses(
     master_address: &str,
     timeout: Option<Duration>,
 ) -> Result<Vec<ServerAddress>> {
-    let response = udp::send_and_receive(master_address, &SERVERS_COMMAND, timeout)?;
+    let options = tinyudp::ReadOptions {
+        timeout,
+        buffer_size: 16 * 1024, // 16 kb
+    };
+    let response = tinyudp::send_and_read(master_address, &SERVERS_COMMAND, &options)?;
     let server_addresses = parse_servers_response(&response)?;
     Ok(sorted_and_unique(&server_addresses))
 }
